@@ -1,0 +1,17 @@
+<div>
+    <h4>Item N°2: Contador de caracteres</h4>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Cargar Datos</button>
+    <ng-container>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">N°</th>
+                        <th *ngFor= 'let letter of letters'>{{letter}}</th>
+                        <th scope="col">Suma numéricos contenidos</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </ng-container>
+</div>
