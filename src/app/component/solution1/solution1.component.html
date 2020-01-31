@@ -1,8 +1,8 @@
 <div>
     <h4>Item N°1: Arreglo de Números</h4>
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'getnumbers()'>Cargar Datos</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'sort(getnumbers())'>Cargar Datos</button>
+    <input class="form-control" type="text" placeholder={{sort(arraycompare)}} readonly>
     <ng-container>
-        <input class="form-control" type="text" placeholder='hola' readonly>
         <div class="container">
             <table class="table">
                 <thead>
@@ -15,8 +15,13 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    
+                    <ng-container *ngFor= 'let item of arraynumbers; index as ind'>
+                        <tr>
+                            <th scope="row">{{ind+1}}</th>
+                            <td>{{item}}</td>
+                            <td>{{quantity[ind+1]}}</td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </table>
         </div>
