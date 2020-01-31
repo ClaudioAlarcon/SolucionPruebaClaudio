@@ -17,9 +17,11 @@
                 <tbody>
                     <ng-container *ngFor= 'let item of numbers; index as ind'>
                         <tr>
-                            <th scope="row">{{ind+1}}</th>
+                            <th scope="row">{{ind}}</th>
                             <td>{{item}}</td>
                             <td>{{numberquantity(numbers, item)}}</td>
+                            <td>{{(getfirstlast(numbers, item)).shift()}}</td>
+                            <td>{{(getfirstlast(numbers, item)).pop()}}</td>
                         </tr>
                     </ng-container>
                 </tbody>

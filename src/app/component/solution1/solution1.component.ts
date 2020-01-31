@@ -9,7 +9,6 @@ import { Solution1 } from 'src/app/interfaces/solution1';
 })
 export class Solution1Component {
   public numbers: number[];
-  count: number;
   public arraydatanumbers: Array<number[]>;
   public arraynumbers: number[];
   public quantity: number[];
@@ -21,7 +20,6 @@ export class Solution1Component {
 
   constructor(public endpoint: EndpointService) {
     this.numbers = [];
-    this.count = 0;
     this.arraydatanumbers = [];
     this.arraynumbers = [];
     this.quantity = [];
@@ -40,16 +38,30 @@ export class Solution1Component {
   });
 }
 
-// // Función para contar números
+// Función para contar números
   public numberquantity(numbers: number[], numb: number): number {
-    this.count = 0;
+    let count = 0;
     numbers.forEach(num => {
       if (num === numb) {
-        this.count += 1;
+        count += 1;
       }
     });
-    return this.count;
+    return count;
 }
+
+// Función para obtener la primera ubicación de un número en la lista
+
+  public getfirstlast(numbers: number[], numb: number): number[] {
+    let ind = 0;
+    const firstlast: number[] = [];
+    numbers.forEach(num => {
+      if (num === numb) {
+        firstlast.push(ind);
+      }
+      ind += 1;
+    });
+    return firstlast;
+  }
 
   // Función para ordenar números
   public sort() {
