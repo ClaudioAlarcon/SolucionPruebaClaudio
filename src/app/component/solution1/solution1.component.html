@@ -1,7 +1,7 @@
 <div>
     <h4>Item N°1: Arreglo de Números</h4>
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'getnumbers()'>Cargar Datos</button>
-    <input class= "form-control" type= "text" readonly placeholder= {{sort(numbers)}}>
+    <input class= "form-control" type= "text" readonly placeholder= {{sort(this.numbers)}}>
     <ng-container>
         <div class="container">
             <table class="table">
@@ -19,7 +19,7 @@
                         <tr>
                             <th scope="row">{{ind+1}}</th>
                             <td>{{item}}</td>
-                            <td>{{quantity[ind+1]}}</td>
+                            <td>{{numberquantity(numbers, item)}}</td>
                         </tr>
                     </ng-container>
                 </tbody>

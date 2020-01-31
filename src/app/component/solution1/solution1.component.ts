@@ -17,6 +17,7 @@ export class Solution1Component {
   public listfirst: number[];
   public listlast: number[];
   public i: number;
+  public tocompare: number[];
 
   constructor(public endpoint: EndpointService) {
     this.numbers = [];
@@ -27,6 +28,7 @@ export class Solution1Component {
     this.listfirst = [];
     this.listlast = [];
     this.i = 0;
+    this.tocompare = [];
    }
 
   // Función para capturar el atributo "data" desde endpoint, retorna una lista con los números.
@@ -38,44 +40,29 @@ export class Solution1Component {
   });
 }
 
-
-//   public quantitydata(da: number[]): number[] {
-//     this.arraycompare = da;
-//     for (const iterator1 of this.arraycompare) {
-//       this.i = 0;
-//       this.count = 0;
-//       for (const iterator2 of da) {
-//         if (iterator1 === iterator2) {
-//           this.count += 1;
-//           if (this.count === 1) {
-//             this.listfirst.push(this.i);
-//             this.listlast.push(this.i);
-//           } else {
-//             this.listlast.pop();
-//             this.listlast.push(this.i);
-//           }
-//         } else {
-//         }
-//         this.i += 1;
-//       }
-//       this.quantity.push(this.count);
-//     }
-//     console.log(this.quantity);
-//     return this.quantity;
-// }
+// // Función para contar números
+  public numberquantity(numbers: number[], numb: number): number {
+    this.count = 0;
+    numbers.forEach(num => {
+      if (num === numb) {
+        this.count += 1;
+      }
+    });
+    return this.count;
+}
 
   // Función para ordenar números
-  public sort(compare: number[]): number[] {
+  public sort() {
     let int = 0;
-    for (let i = 0; i < (compare.length - 1); i++) {
-      for (let j = 0; j < (compare.length - i); j++) {
-        if (compare[j] > compare[j + 1]) {
-          int = compare[j];
-          compare[j] = compare[j + 1];
-          compare[j + 1] = int;
+    for (let i = 0; i < (this.numbers.length - 1); i++) {
+      for (let j = 0; j < (this.numbers.length - i); j++) {
+        if (this.numbers[j] > this.numbers[j + 1]) {
+          int = this.numbers[j];
+          this.numbers[j] = this.numbers[j + 1];
+          this.numbers[j + 1] = int;
         }
       }
     }
-    return compare;
+    return this.numbers;
   }
 }
