@@ -16,12 +16,13 @@
                 </thead>
                 <tbody>
                     <ng-container *ngFor= 'let item of numbers; index as ind'>
-                        <tr>
+                        <tr [ngStyle]="{'background-color': numberquantity(numbers, item) === 1 ? 'yellow' : 
+                        (numberquantity(numbers, item) >= 2 ? 'green' : 'gray') }"> 
                             <th scope="row">{{ind}}</th>
                             <td>{{item}}</td>
                             <td>{{numberquantity(numbers, item)}}</td>
-                            <td>{{(getfirstlast(numbers, item)).shift()}}</td>
-                            <td>{{(getfirstlast(numbers, item)).pop()}}</td>
+                            <td>{{getfirst(numbers, item)}}</td>
+                            <td>{{getlast(numbers, item)}}</td>
                         </tr>
                     </ng-container>
                 </tbody>

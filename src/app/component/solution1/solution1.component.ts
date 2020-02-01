@@ -9,30 +9,23 @@ import { Solution1 } from 'src/app/interfaces/solution1';
 })
 export class Solution1Component {
   public numbers: number[];
-  public arraydatanumbers: Array<number[]>;
-  public arraynumbers: number[];
   public quantity: number[];
-  public arraycompare: number[];
   public listfirst: number[];
   public listlast: number[];
   public i: number;
-  public tocompare: number[];
+  public norepeatednumbers: number[];
 
   constructor(public endpoint: EndpointService) {
     this.numbers = [];
-    this.arraydatanumbers = [];
-    this.arraynumbers = [];
     this.quantity = [];
     this.listfirst = [];
     this.listlast = [];
     this.i = 0;
-    this.tocompare = [];
+    this.norepeatednumbers = [];
    }
 
   // Función para capturar el atributo "data" desde endpoint, retorna una lista con los números.
   public getnumbers(): void {
-    this.arraydatanumbers = [];
-    this.arraynumbers = [];
     this.endpoint.getdata('http://patovega.com/prueba_frontend/array.php').subscribe((res: Solution1) => {
     this.numbers = res.data;
   });
@@ -49,9 +42,24 @@ export class Solution1Component {
     return count;
 }
 
-// Función para obtener la primera ubicación de un número en la lista
+// // Función para quitar números repetidos
+// public delrepeatednumbers(numbers: number[]) {
+//   const tocompare = numbers;
+//   numbers.forEach(num => {
+//     let i = 0;
+//     tocompare.forEach(numb => {
+//       if (num === numb) {
+//         tocompare.splice(i, 1);
+//       }
+//     });
+//     i += 1;
+//   });
+//   console.log(tocompare);
+//   return tocompare;
+// }
 
-  public getfirstlast(numbers: number[], numb: number): number[] {
+// Función para obtener la primera ubicación de un número en la lista
+  public getfirst(numbers: number[], numb: number): number {
     let ind = 0;
     const firstlast: number[] = [];
     numbers.forEach(num => {
@@ -60,7 +68,20 @@ export class Solution1Component {
       }
       ind += 1;
     });
-    return firstlast;
+    return firstlast.shift();
+  }
+
+  // Función para obtener el últumo índice del número dentro de la lista
+  public getlast(numbers: number[], numb: number): number {
+    let ind = 0;
+    const firstlast: number[] = [];
+    numbers.forEach(num => {
+      if (num === numb) {
+        firstlast.push(ind);
+      }
+      ind += 1;
+    });
+    return firstlast.pop();
   }
 
   // Función para ordenar números
