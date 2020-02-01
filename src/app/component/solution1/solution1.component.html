@@ -1,7 +1,19 @@
 <div>
     <h4>Item N°1: Arreglo de Números</h4>
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'getnumbers()'>Cargar Datos</button>
-    <input class= "form-control" type= "text" readonly placeholder= {{sort(this.numbers)}}>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'getnumbers()'>Cargar Datos</button>
+        </div>
+    </div>
+    <br>
+    <div class="col-md-4">
+        <a>Datos desde endpoint.</a>
+        <input class= "form-control" type= "text" readonly placeholder= {{this.numbers}}>
+        <br>
+        <a>Datos ordenados de menor a mayor.</a>
+        <input class= "form-control" type= "text" readonly placeholder= {{sort(this.numbers)}}>
+    </div>
+    <br>
     <ng-container>
         <div class="container">
             <table class="table">
@@ -17,7 +29,7 @@
                 <tbody>
                     <ng-container *ngFor= 'let item of numbers; index as ind'>
                         <tr [ngStyle]="{'background-color': numberquantity(numbers, item) === 1 ? 'yellow' : 
-                        (numberquantity(numbers, item) >= 2 ? 'green' : 'gray') }"> 
+                        (numberquantity(numbers, item) >= 2 ? 'green' : 'gray') }" *ngIf="!isrepeated(numbers, item, ind)"> 
                             <th scope="row">{{ind}}</th>
                             <td>{{item}}</td>
                             <td>{{numberquantity(numbers, item)}}</td>

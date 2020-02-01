@@ -42,21 +42,20 @@ export class Solution1Component {
     return count;
 }
 
-// // Función para quitar números repetidos
-// public delrepeatednumbers(numbers: number[]) {
-//   const tocompare = numbers;
-//   numbers.forEach(num => {
-//     let i = 0;
-//     tocompare.forEach(numb => {
-//       if (num === numb) {
-//         tocompare.splice(i, 1);
-//       }
-//     });
-//     i += 1;
-//   });
-//   console.log(tocompare);
-//   return tocompare;
-// }
+// Función que revisa si el numero ya está anteriormente, si lo está, esta retorna: true.
+public isrepeated(numbers: number[], num: number, ind: number): boolean {
+  let validator = false;
+  let count = 0;
+  for (let index = 0; index <= ind; index++) {
+    if (num === numbers[index]) {
+      count += 1;
+      if (count > 1) {
+        validator = true;
+      }
+    }
+  }
+  return validator;
+}
 
 // Función para obtener la primera ubicación de un número en la lista
   public getfirst(numbers: number[], numb: number): number {
