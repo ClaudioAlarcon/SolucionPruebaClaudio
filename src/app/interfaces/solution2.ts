@@ -1,5 +1,11 @@
 export interface Solution2 {
-    data?: string[];
+    data?: ObjectEndPoint;
     error?: number;
     success: boolean;
+}
+
+export interface ObjectEndPoint {
+    paragraph: string;
+    number: number;
+    hasCopyright: boolean;
 }
