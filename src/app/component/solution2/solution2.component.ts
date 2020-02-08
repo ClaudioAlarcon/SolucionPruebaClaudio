@@ -15,11 +15,15 @@ export class Solution2Component {
   public text: string[];
   public arrayendpoint: Array<ObjectEndPoint>;
   public paragraphs: string[];
+  public RegEx: RegExp;
+  public prueba: string[];
 
   constructor(public endpoint: EndpointService) {
     this.text = [];
     this.arrayendpoint = [];
     this.paragraphs = [];
+    this.RegEx = /[0-9]+/g;
+    this.prueba = ['lkdaslkdalsdk 1970 akdjaskdj 30 ksmdkasd 2002', '1'];
   }
 
   // Función para capturar el endpoint y guardarlo en un array de objetos, guardando los textos en una lista.
@@ -43,5 +47,11 @@ export class Solution2Component {
     return count;
   }
 
+  // Función para encontrar los números dentro de la cadena de texto
+  public findnumbers(ind: number): number[] {
+    let numbers = [];
+    numbers = this.paragraphs[ind].match(this.RegEx);
+    return numbers;
+  }
 }
 
