@@ -12,9 +12,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngFor= 'let object of arrayendpoint; index as ind'>
+                    <ng-container *ngFor= 'let paragraph of paragraphs; index as ind'>
                         <tr>
                             <th scope="col">{{ind}}</th> 
+                            <td *ngFor= 'let letter of letters'>{{countletters(ind, letter)}}</td>
+                            <th>{{(ind)}}</th> 
                         </tr>
                     </ng-container>
                 </tbody>

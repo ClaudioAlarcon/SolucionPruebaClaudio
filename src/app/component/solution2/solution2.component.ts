@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution2, ObjectEndPoint } from 'src/app/interfaces/solution2';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-solution2',
@@ -31,4 +32,16 @@ export class Solution2Component {
     console.log(this.paragraphs);
   });
 }
+  // Función para contar letras, recibe el indice del párrafo dentro del arreglo párrafos y la letra a contar.
+  public countletters(ind: number, letter: string): number {
+    let count = 0;
+    for (const iterator of this.paragraphs[ind].toLowerCase()) {
+      if (iterator === letter) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
 }
+
