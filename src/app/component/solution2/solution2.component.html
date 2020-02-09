@@ -1,6 +1,10 @@
 <div>
     <h4>Item N°2: Contador de caracteres</h4>
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'gettext()'>Cargar Datos</button>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)= 'gettext()'>Cargar Datos</button>
+        </div>
+    </div>
     <ng-container>
         <div class="container">
             <table class="table">
@@ -16,7 +20,7 @@
                         <tr>
                             <th scope="col">{{ind}}</th> 
                             <td *ngFor= 'let letter of letters'>{{countletters(ind, letter)}}</td>
-                            <th>{{(findnumbers(ind))}}</th> 
+                            <th>{{sumnumbers((findnumbers(ind)))}}</th> 
                         </tr>
                     </ng-container>
                 </tbody>

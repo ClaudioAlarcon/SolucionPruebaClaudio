@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution2, ObjectEndPoint } from 'src/app/interfaces/solution2';
-import { isNumber } from 'util';
 
 @Component({
   selector: 'app-solution2',
@@ -16,14 +14,12 @@ export class Solution2Component {
   public arrayendpoint: Array<ObjectEndPoint>;
   public paragraphs: string[];
   public RegEx: RegExp;
-  public prueba: string[];
 
   constructor(public endpoint: EndpointService) {
     this.text = [];
     this.arrayendpoint = [];
     this.paragraphs = [];
     this.RegEx = /[0-9]+/g;
-    this.prueba = ['lkdaslkdalsdk 1970 akdjaskdj 30 ksmdkasd 2002', '1'];
   }
 
   // Función para capturar el endpoint y guardarlo en un array de objetos, guardando los textos en una lista.
@@ -52,6 +48,17 @@ export class Solution2Component {
     let numbers = [];
     numbers = this.paragraphs[ind].match(this.RegEx);
     return numbers;
+  }
+
+  // Función para sumar números dentro del arreglo "numbers"
+  public sumnumbers(numbers: string[]): number {
+    let sum = 0;
+    if (numbers != null) {
+      numbers.forEach(element => {
+        sum += parseInt(element, 10);
+      });
+    }
+    return sum;
   }
 }
 
