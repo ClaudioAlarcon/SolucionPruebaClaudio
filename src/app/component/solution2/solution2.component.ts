@@ -25,11 +25,11 @@ export class Solution2Component {
   // Función para capturar el endpoint y guardarlo en un array de objetos, guardando los textos en una lista.
   public gettext(): void {
     this.endpoint.getdata('http://patovega.com/prueba_frontend/dict.php').subscribe((res: Solution2) => {
+    this.paragraphs = [];
     this.arrayendpoint = JSON.parse(res.data.toString());
     this.arrayendpoint.forEach(element => {
       this.paragraphs.push(element.paragraph);
     });
-    console.log(this.paragraphs);
   });
 }
   // Función para contar letras, recibe el indice del párrafo dentro del arreglo párrafos y la letra a contar.
