@@ -1,33 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution1 } from 'src/app/interfaces/solution1';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-solution1',
   templateUrl: './solution1.component.html',
   styleUrls: ['./solution1.component.css']
 })
-export class Solution1Component {
+export class Solution1Component implements OnInit {
   public numbers: number[];
   public quantity: number[];
   public listfirst: number[];
   public listlast: number[];
-  public i: number;
   public norepeatednumbers: number[];
+  public success: boolean;
 
-  constructor(public endpoint: EndpointService) {
+  constructor(public endpoint: EndpointService, private router: Router) {
     this.numbers = [];
     this.quantity = [];
     this.listfirst = [];
     this.listlast = [];
-    this.i = 0;
     this.norepeatednumbers = [];
+    this.success = false;
+   }
+   ngOnInit() {
    }
 
   // Función para capturar el atributo "data" desde endpoint, retorna una lista con los números.
   public getnumbers(): void {
+    this.numbers = [];
     this.endpoint.getdata('http://patovega.com/prueba_frontend/array.php').subscribe((res: Solution1) => {
     this.numbers = res.data;
+    this.success = res.success;
+    if (this.success === false) {
+      this.router.navigate(['datafalse']);
+    }
   });
 }
 

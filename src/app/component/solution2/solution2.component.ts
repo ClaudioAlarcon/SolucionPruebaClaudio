@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution2, ObjectEndPoint } from 'src/app/interfaces/solution2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solution2',
@@ -14,12 +15,14 @@ export class Solution2Component {
   public arrayendpoint: Array<ObjectEndPoint>;
   public paragraphs: string[];
   public RegEx: RegExp;
+  public success: boolean;
 
-  constructor(public endpoint: EndpointService) {
+  constructor(public endpoint: EndpointService, private router: Router) {
     this.text = [];
     this.arrayendpoint = [];
     this.paragraphs = [];
     this.RegEx = /[0-9]+/g;
+    this.success = false;
   }
 
   // Función para capturar el endpoint y guardarlo en un array de objetos, guardando los textos en una lista.
@@ -27,6 +30,10 @@ export class Solution2Component {
     this.endpoint.getdata('http://patovega.com/prueba_frontend/dict.php').subscribe((res: Solution2) => {
     this.paragraphs = [];
     this.arrayendpoint = JSON.parse(res.data.toString());
+    this.success = res.success;
+    if (this.success === false) {
+      this.router.navigate(['datafalse']);
+    }
     this.arrayendpoint.forEach(element => {
       this.paragraphs.push(element.paragraph);
     });
