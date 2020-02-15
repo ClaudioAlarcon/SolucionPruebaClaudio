@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution2, ObjectEndPoint } from 'src/app/interfaces/solution2';
 import { Router } from '@angular/router';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-solution2',
@@ -17,7 +18,7 @@ export class Solution2Component {
   public RegEx: RegExp;
   public success: boolean;
 
-  constructor(public endpoint: EndpointService, private router: Router) {
+  constructor(public endpoint: EndpointService, private router: Router, private loadingBar: LoadingBarService)  {
     this.text = [];
     this.arrayendpoint = [];
     this.paragraphs = [];
@@ -25,8 +26,18 @@ export class Solution2Component {
     this.success = false;
   }
 
+  // Función para iniciar la barra de carga
+  startLoading() {
+    this.loadingBar.start();
+  }
+  // Función para detener la barra de carga
+  stopLoading() {
+    this.loadingBar.complete();
+  }
+
   // Función para capturar el endpoint y guardarlo en un array de objetos, guardando los textos en una lista.
   public gettext(): void {
+    this.startLoading();
     this.endpoint.getdata('http://patovega.com/prueba_frontend/dict.php').subscribe((res: Solution2) => {
     this.paragraphs = [];
     this.arrayendpoint = JSON.parse(res.data.toString());
@@ -38,6 +49,7 @@ export class Solution2Component {
       this.paragraphs.push(element.paragraph);
     });
   });
+    this.stopLoading();
 }
   // Función para contar letras, recibe el indice del párrafo dentro del arreglo párrafos y la letra a contar.
   public countletters(ind: number, letter: string): number {

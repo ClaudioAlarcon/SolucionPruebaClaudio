@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +18,8 @@ import { DatafalseComponent } from './component/datafalse/datafalse.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoadingBarRouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
