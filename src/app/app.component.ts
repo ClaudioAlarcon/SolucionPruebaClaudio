@@ -8,12 +8,4 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 })
 export class AppComponent {
   title = 'SolucionPrueba';
-  constructor(private loadingBar: LoadingBarService) {}
-
-  startLoading() {
-    this.loadingBar.start();
-  }
-  public stopLoading() {
-    this.loadingBar.complete();
-  }
 }

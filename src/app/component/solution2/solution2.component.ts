@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EndpointService } from 'src/app/services/endpoint.service';
 import { Solution2, ObjectEndPoint } from 'src/app/interfaces/solution2';
 import { Router } from '@angular/router';
