@@ -1,5 +1,7 @@
 # SolucionPrueba
 
+#Esta es una solucion de una prueba de ingreso para el cargo de front end developer, es antigua por lo que los endpoints probablemente ya no funcionen.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
 ## Development server
